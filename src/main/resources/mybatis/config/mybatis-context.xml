@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 <typeAliases>
-	
+	<package name="com.inc.dayary.domain"/>
 </typeAliases> <!-- mapper에 vo패키지에 별칭을 주는 태그 -->
   <mappers>
-  	
+  	<mapper resource="mybatis/mapper/diary.xml" />
   </mappers>
 </configuration>
