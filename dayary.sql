@@ -1,4 +1,5 @@
 create user smile02 identified by 11111111;
+--drop user smile02 
 
 grant dba to smile02;
 
