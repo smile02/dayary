@@ -17,5 +17,8 @@ public class DiaryDao {
 	public List<Diary> list() {
 		return sqlSession.selectList("diary.list");
 	}
-	
+
+	public void add(Diary diary) {
+		sqlSession.insert("diary.add",diary);
+	}	
 }

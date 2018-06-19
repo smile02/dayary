@@ -17,5 +17,11 @@ insert into diary
     values (seq_diary_id.nextval, 'hyeon', '첫번째 일기','점심 점심 점심', sysdate);
 insert into diary
     values (seq_diary_id.nextval, 'hyeon', '두번째 일기','프로젝트 시작', sysdate);
+insert into diary
+    values (seq_diary_id.nextval, 'hyeon', '세번째 일기','프로젝트 진행 중', sysdate);
     
 --commit;
+
+select * from diary;
+
+delete diary;
