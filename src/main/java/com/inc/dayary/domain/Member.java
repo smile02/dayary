@@ -7,11 +7,14 @@ public class Member {
 	
 	@Pattern(regexp="[a-zA-Z0-9]{4,10}",message="알파벳 또는 숫자 4~10글자")
 	private String id;
+	
 	@Pattern(regexp="[a-zA-Z0-9]{4,10}",message="알파벳 또는 숫자 4~10글자")
-	private String password;
+	private String password;	
 	private String passwordConfirm;
+	
 	@Pattern(regexp="[가-힣]{2,10}",message="이름은 한글 2~10글자이내")
 	private String name;
+	
 	@Pattern(regexp="[A-Za-z0-9]+@[A-Za-z0-9]+.[A-Za-z]{2,10}",message="예)email0000@email.com형식으로 입력해주세요. 30글자 이내")
 	private String email;
 	private String emailCode;

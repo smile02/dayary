@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-@Configuration //자바에서 bean을 등록해주는 역할을 하려면 필요
+@Configuration //자바에서 bean을 등록해주는 역할을 하려면 필요 (xml파일이라고 생각해야 함)
 public class RootContext {
 	
 	@Bean

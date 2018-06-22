@@ -2,8 +2,6 @@ package com.inc.dayary.service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import javax.management.RuntimeErrorException;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;

@@ -14,8 +14,10 @@ create table diary(
 
 create sequence seq_diary_id;
 
+
+
 insert into diary
-    values (seq_diary_id.nextval, 'hyeon', '첫번째 일기','점심 점심 점심', sysdate);
+    values (seq_diary_id.nextval, 'bestuser', '첫번째 일기','점심 점심 점심', sysdate);
 insert into diary
     values (seq_diary_id.nextval, 'hyeon', '두번째 일기','프로젝트 시작', sysdate);
 insert into diary
@@ -44,4 +46,5 @@ select * from member;
 --delete from member;
 --commit;
 
+alter table diary add constraint fk_diary_u_id foreign key(u_id) references member(id);
 -------------------------------------------------------------------------------

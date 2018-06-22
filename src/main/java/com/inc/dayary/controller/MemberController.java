@@ -2,6 +2,7 @@ package com.inc.dayary.controller;
 
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -106,7 +107,43 @@ public class MemberController {
 		session.setAttribute("emailCode", emailCode);		
 		return "success";
 	}
-
+	
+	@GetMapping("/member/signin")
+	public String signin(Model model) {
+		model.addAttribute("member",new Member());
+		return "member/signin";
+	}
+	
+	@PostMapping("/member/signin")
+	public String signin(@ModelAttribute Member member,
+						 BindingResult result,HttpServletRequest request) {
+		Member savedMember = memberService.findOne(member.getId());
+		
+		if(savedMember == null) {
+			result.addError(new FieldError("Not ExsitId","id","존재하지 않는 아이디입니다."));
+		}else if(!savedMember.getPassword().equals(member.getPassword())) {
+			result.addError(new FieldError("Not Equals Password","password","비밀번호가 일치하지 않습니다."));
+		}
+		
+		if(result.hasErrors()) {
+			return "member/signin";
+		}
+		
+		request.getSession().invalidate(); //세션탈취 방지
+		request.getSession().setAttribute("member", member);
+		
+		//request.getSeesion().invalidate는 세션을 만료시킴
+		//request.getSession().set~~하면 새로운 세션을 발급받음
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/member/signout")
+	public String signout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/member/signin";
+	}
+	
 	private boolean emailValidator(String email) {
 		return Pattern.compile("([A-Za-z0-9]+@[A-Za-z0-9]+.[A-Za-z]{2,10})").matcher(email).matches();
 	}
