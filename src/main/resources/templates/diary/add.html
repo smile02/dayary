@@ -18,6 +18,9 @@
 						value="${spring.status.value?default('')}"/> 
 					<span class="error">${spring.status.errorMessages[0]?default('')}</span>
 					<!--?default('') :  null이라면 공백을 넣어주기 -->
+					<!-- <#list spring.status.errorMessages as error>
+						<span class="error">${error}</span>
+					</#list> -->
 				</div>
 			</div>
 			

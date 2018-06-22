@@ -3,6 +3,7 @@ create user smile02 identified by 11111111;
 
 grant dba to smile02;
 
+--diary
 create table diary(
     id number primary key,
     u_id varchar2(15),
@@ -24,4 +25,23 @@ insert into diary
 
 select * from diary;
 
-delete diary;
+--delete diary;
+
+--member
+
+create table member(
+    id varchar2(10) primary key,
+    password varchar2(10) not null,
+    name varchar2(30) not null,
+    email varchar2(30) not null unique,
+    gender char(1) check(gender in('m','f'))    
+);
+
+insert into member
+    values ('hyeon','qwer1234','°íÇöÁø','smile@naver.com','m');
+    
+select * from member;
+--delete from member;
+--commit;
+
+-------------------------------------------------------------------------------

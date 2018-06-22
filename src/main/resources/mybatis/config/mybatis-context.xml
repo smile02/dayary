@@ -8,5 +8,6 @@
 </typeAliases> <!-- mapper에 vo패키지에 별칭을 주는 태그 -->
   <mappers>
   	<mapper resource="mybatis/mapper/diary.xml" />
+  	<mapper resource="mybatis/mapper/member.xml" />
   </mappers>
 </configuration>
