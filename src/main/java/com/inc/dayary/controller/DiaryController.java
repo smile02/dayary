@@ -37,12 +37,12 @@ public class DiaryController {
 	@PostMapping("/diary/add")
 	public String add(@ModelAttribute @Valid Diary diary, BindingResult result,
 					  HttpSession session) {
-		System.out.println(diary.getTags().size());
+//		System.out.println("사이즈 : "+diary.getTags().size());
 		if(result.hasErrors()) {
 			return "diary/add";
 		}
 		Member member = (Member)session.getAttribute("member");
-		diary.setU_id(member.getId());
+		diary.setU_id(member.getId());		
 		diaryService.add(diary);
 		
 		return "redirect:/";

@@ -34,7 +34,7 @@
 					</h5>
 					<h5>
 						<#list diary.tags as tag>
-							<span class="label label-${tag.color}">${tag.name}</span>
+							<span class="label label-${tag.color?default('')}">${tag.name?default('')}</span>
 						</#list>
 					</h5>
 					<br />
