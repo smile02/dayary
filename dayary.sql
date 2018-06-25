@@ -48,3 +48,13 @@ select * from member;
 
 alter table diary add constraint fk_diary_u_id foreign key(u_id) references member(id);
 -------------------------------------------------------------------------------
+
+--tag 테이블
+create table tag(
+    id number primary key,
+    d_id number references diary(id),
+    name varchar2(30) not null,
+    color varchar2(10) default 'default' not null --기본값은 회색으로
+);
+
+create sequence seq_tag_id;

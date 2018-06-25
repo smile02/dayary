@@ -5,6 +5,7 @@
 <#include "/include/header.html"/>
 <link rel="stylesheet" href="/webjars/summernote/0.8.9/dist/summernote.css" />
 <title>Add</title>
+
 </head>
 <body>
 	<#include "/include/nav.html"/>
@@ -24,13 +25,39 @@
 				</div>
 			</div>
 			
+			<div class="form-group">
+				<label class="control-label col-sm-2">Tagging</label>
+				<div class="col-sm-6">
+					<div class="row">
+						<div class="col-sm-2">
+							<input type="text" id="tag-name" class="form-control" />
+						</div>
+						<div class="col-sm-3">
+							<select id="tag-color" class="form-control">
+								<option value="">회색</option>
+								<option value="danger">빨강</option>
+								<option value="primary">파랑</option>
+								<option value="success">초록</option>
+								<option value="warning">노랑</option>
+							</select>
+						</div>
+						<div class="col-sm-1">
+							<button type="button" onclick="tag();" class="btn btn-default block">추가</button>
+						</div>
+						<div id="tags" class="col-sm-5 col-sm-offset-1">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<@spring.bind "diary.content"/>
 			<div class="form-group">
 				<label for="" class="control-label col-sm-2">Content</label>
 				<div class="col-sm-6">
 					<textarea id="content" name="${spring.status.expression}"
 					 class="form-control">${spring.status.value?default('')}</textarea> 
-					<span class="error">${spring.status.errorMessages[0]?default('')}</span>
+					<span class="error">${spring.status.errorMessage?default('')}</span>
 					<!--?default('') :  null이라면 공백을 넣어주기 -->
 				</div>
 			</div>
@@ -41,7 +68,7 @@
 				</div>
 			</div>
 		</form>
-	</div>
+	</div> 
 <#include "/include/footer.html"/>
 <script src="/webjars/summernote/0.8.9/dist/summernote.min.js"></script>
 <script src="/webjars/summernote/0.8.9/dist/lang/summernote-ko-KR.js"></script>
@@ -54,6 +81,31 @@
 		minHeight:100,
 		maxHeight:200
 	});
+	var idx=0;
+	function tag(){
+		var name = $("#tag-name").val();
+		var color = $("#tag-color").val();
+		
+		if(color == ''){
+			color = "default";
+		}
+		console.log(name+color);
+				
+		var $span = $("<span></span>");
+		$span.addClass('label label-'+color);
+		$span.text(name);
+		$span.css("fontSize","9pt");
+		
+		$("#tags").append($span);
+		$("#tags").html(($("#tags").html()+"&nbsp;"));
+		
+		$("#tags").append(
+				"<input type='hidden' name='tags["+idx+"].name' value='"+name+"'/>");
+		$("#tags").append(
+				"<input type='hidden' name='tags["+idx+"].color' value='"+color+"'/>");
+		idx++;
+		$("#tag-name").append(' ');
+	}
 </script>
 </body>
 </html>

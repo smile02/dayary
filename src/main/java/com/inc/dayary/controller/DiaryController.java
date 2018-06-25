@@ -37,6 +37,7 @@ public class DiaryController {
 	@PostMapping("/diary/add")
 	public String add(@ModelAttribute @Valid Diary diary, BindingResult result,
 					  HttpSession session) {
+		System.out.println(diary.getTags().size());
 		if(result.hasErrors()) {
 			return "diary/add";
 		}

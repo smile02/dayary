@@ -19,7 +19,6 @@ public class ServletContext implements WebMvcConfigurer{
 				.addPathPatterns("/")
 				.addPathPatterns("/member/mypage")
 				.addPathPatterns("/diary/**");
-		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 	
 	
